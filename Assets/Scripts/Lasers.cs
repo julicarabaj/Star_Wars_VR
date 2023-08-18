@@ -8,7 +8,8 @@ public class Lasers : MonoBehaviour
     public float lifeTime;
     void Start()
     {
-        Destroy(gameObject, lifeTime);
+        //OnCollisionEnter(Collision);
+        //Destroy(gameObject, lifeTime);
     }
 
     void Update()
@@ -16,8 +17,12 @@ public class Lasers : MonoBehaviour
         transform.position += transform.forward * speed;
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }   
+      
     }
 }
