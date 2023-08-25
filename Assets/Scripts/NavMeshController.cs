@@ -7,7 +7,8 @@ public class NavMeshController : MonoBehaviour
 {
     // Start is called before the first frame update
     private NavMeshAgent agente;
-    
+    public Transform target;
+
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
@@ -16,6 +17,10 @@ public class NavMeshController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target)
+        {
+            agente.destination = target.position;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
