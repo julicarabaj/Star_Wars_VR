@@ -8,7 +8,6 @@ public class Lasers : MonoBehaviour
     public float lifeTime;
     void Start()
     {
-        //OnCollisionEnter(Collision);
         //Destroy(gameObject, lifeTime);
     }
 

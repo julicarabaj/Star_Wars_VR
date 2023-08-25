@@ -9,24 +9,38 @@ public class Gun : MonoBehaviour
     public float reloadTime;
     public float inacuracy;
     float currReloadTime;
+    float reloadTimeMultiplier;
+    float baseReloadTime;
     //bool canShoot = true;
     void Start()
     {
+        baseReloadTime = reloadTime;
         currReloadTime = reloadTime;
     }
     void Update()
     {
-        if (currReloadTime > 0)
+        if (GameObject.FindWithTag("Player").transform )
         {
-            currReloadTime -= Time.deltaTime;
+            if (currReloadTime > 0)
+            {
+                currReloadTime -= Time.deltaTime;
+            }
+            else
+            {
+                var b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+                //b.transform.eulerAngles += new Vector3(Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy));
+                //esta linea esta por si quieren hacer que la bala tenga cierta impresicion
+                //en su salida. Solo la roto en x y z al azar
+                //en vez de igualarlo, cambiar el valor al que lo igualo por un multiplicador
+                reloadTime -= reloadTime * 1 / reloadTimeMultiplier;
+                currReloadTime = reloadTime;
+            }
         }
-        if (GameObject.FindWithTag("Player").transform && currReloadTime <= 0)
+        else
         {
-            var b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
-            //b.transform.eulerAngles += new Vector3(Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy));
-            //esta linea esta por si quieren hacer que la bala tenga cierta impresicion
-            //en su salida. Solo la roto en x y z al azar
-            currReloadTime = reloadTime;
+            reloadTime = baseReloadTime;
         }
+
     }
+
 }
