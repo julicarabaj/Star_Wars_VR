@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     float currReloadTime;
     float reloadTimeMultiplier;
     float baseReloadTime;
-    //bool canShoot = true;
+    bool canShoot = false;
     void Start()
     {
         baseReloadTime = reloadTime;
@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     }
     void Update()
     {
-        if (GameObject.FindWithTag("Player").transform )
+        if (canShoot)
         {
             if (currReloadTime > 0)
             {
@@ -27,13 +27,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                var b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
-                //b.transform.eulerAngles += new Vector3(Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy));
-                //esta linea esta por si quieren hacer que la bala tenga cierta impresicion
-                //en su salida. Solo la roto en x y z al azar
-                //en vez de igualarlo, cambiar el valor al que lo igualo por un multiplicador
-                reloadTime -= reloadTime * 1 / reloadTimeMultiplier;
-                currReloadTime = reloadTime;
+                Disparar();
             }
         }
         else
@@ -41,6 +35,16 @@ public class Gun : MonoBehaviour
             reloadTime = baseReloadTime;
         }
 
+    }
+    void Disparar ()
+    {
+        var b = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
+        //b.transform.eulerAngles += new Vector3(Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy), Random.Range(-inacuracy, inacuracy));
+        //esta linea esta por si quieren hacer que la bala tenga cierta impresicion
+        //en su salida. Solo la roto en x y z al azar
+        //en vez de igualarlo, cambiar el valor al que lo igualo por un multiplicador
+        reloadTime -= reloadTime * 1 / reloadTimeMultiplier;
+        currReloadTime = reloadTime;
     }
 
 }
