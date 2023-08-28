@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     public bool folllowPlayer;
     private float distancePlayer;
     public float distanceToFollow = 5;
-
+    /*
     void Start()
     {
         navMeshAgent.destination = destinations[0].transform.position; //si se quiere un target especifico sin moverse en el start esta bien
@@ -59,5 +59,5 @@ public class NewBehaviourScript : MonoBehaviour
         navMeshAgent.destination = player.transform.position;
     }
 
-
+    */
 }
