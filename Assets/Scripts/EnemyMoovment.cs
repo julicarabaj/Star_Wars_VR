@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    /*
     public GameObject player;
     public NavMeshAgent navMeshAgent;
     public Transform[] destinations; //Array para los puntos target del enemy
@@ -15,7 +16,7 @@ public class NewBehaviourScript : MonoBehaviour
     public bool folllowPlayer;
     private float distancePlayer;
     public float distanceToFollow = 5;
-    /*
+    
     void Start()
     {
         navMeshAgent.destination = destinations[0].transform.position; //si se quiere un target especifico sin moverse en el start esta bien
