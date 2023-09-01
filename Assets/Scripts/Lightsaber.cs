@@ -14,7 +14,7 @@ public class Lightsaber : MonoBehaviour
     {
         laser = transform.Find("SingleLine-TextureAdditive").gameObject;
         fullSize = laser.transform.localScale;
-        laser   .transform.localScale = new Vector3(fullSize.x, 0, fullSize.z); 
+        laser .transform.localScale = new Vector3(fullSize.x, 0, fullSize.z); 
     }
 
 
@@ -22,7 +22,8 @@ public class Lightsaber : MonoBehaviour
     {
         if (OVRInput.GetDown(OVRInput.Button.One, controller))
         {
-            activate = !activate;      
+            activate = !activate;
+            Debug.Log("boton");
         }
         if (activate && laser.transform.localScale.y < fullSize.y)
         {
