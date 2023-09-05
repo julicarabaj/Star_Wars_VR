@@ -18,7 +18,7 @@ public class Lasers : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Lightsaber"))
         {
             Destroy(gameObject);
         }   

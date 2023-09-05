@@ -9,7 +9,7 @@ public class Lightsaber : MonoBehaviour
     private bool activate = false;
     private GameObject laser;
     private Vector3 fullSize;
-
+    
     void Start()
     {
         laser = transform.Find("SingleLine-TextureAdditive").gameObject;
@@ -20,18 +20,32 @@ public class Lightsaber : MonoBehaviour
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One, controller))
-        {
-            activate = !activate;
-            Debug.Log("boton");
-        }
+        GetInput();
+        lasersControll();
+    }
+
+    private void lasersControll()
+    {
         if (activate && laser.transform.localScale.y < fullSize.y)
         {
+            laser.SetActive(true);
             laser.transform.localScale += new Vector3(0, 0.0001f, 0);
         }
         else if (activate == false && laser.transform.localScale.y >= 0)
         {
             laser.transform.localScale += new Vector3(0, -0.0001f, 0);
+        }
+        else if (activate == false && laser.transform.localScale.y >= 0)
+        {
+            laser.SetActive(false);
+        }
+    }
+    private void GetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            activate = !activate;
+            Debug.Log("boton");
         }
     }
     

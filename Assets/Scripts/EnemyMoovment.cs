@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class EnemyMoovment : MonoBehaviour
 {
     /*
     public GameObject player;
@@ -16,11 +16,11 @@ public class NewBehaviourScript : MonoBehaviour
     public bool folllowPlayer;
     private float distancePlayer;
     public float distanceToFollow = 5;
-    
+
     void Start()
     {
-        navMeshAgent.destination = destinations[0].transform.position; //si se quiere un target especifico sin moverse en el start esta bien
-        //player = FindObjectOfType<InputActionManager>().GameObject;
+        //navMeshAgent.destination = destinations[0].transform.position; //si se quiere un target especifico sin moverse en el start esta bien
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
@@ -42,7 +42,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (Vector3.Distance(transform.position, destinations[i].position <= distanceToFollowPath))
         {
-            if (destinations[i] != destinations[destinations.Lenght] - 1)
+            if (destinations[i] != destinations[destinations.Length - 1] )
             {
                 i++;
             }
@@ -59,6 +59,5 @@ public class NewBehaviourScript : MonoBehaviour
     {
         navMeshAgent.destination = player.transform.position;
     }
-
     */
 }
